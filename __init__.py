@@ -15,7 +15,7 @@
 # You should have received a copy of the GNU General Public License
 # along with Mycroft Core.  If not, see <http://www.gnu.org/licenses/>.
 
-from os.path import dirname
+from os.path import dirname, exists
 
 from adapt.intent import IntentBuilder
 from mycroft.skills.core import MycroftSkill
@@ -151,6 +151,13 @@ class DiagnosticsSkill(MycroftSkill):
     def handle_custom_intent(self, message):
         if not self.diagnostic_script:
             self.speak_dialog("no.script")
+            return
+
+        if not exists(self.diagnostic_script):
+            data = {
+                "script": self.diagnostic_script
+            }
+            self.speak_dialog("missing.script", data)
             return
 
         self.speak_dialog("processing.script")

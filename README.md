@@ -20,7 +20,8 @@ git clone https://github.com/the7erm/mycroft-skill-diagnostics.git diagnostics
 ```
 
 ## Diagnostics
-The diagnostics script needs to be defined in `mycroft.ini`.  You can set it in `/etc/mycroft/mycroft.ini` or `~/.mycroft/mycroft.ini`.  The script can be the output to any program you'd like.  Whatever the stdout is, will be what mycroft says.
+The diagnostics script needs to be defined in `mycroft.ini`.  You can set it in `/etc/mycroft/mycroft.ini` or `~/.mycroft/mycroft.ini`.  The script can be the output to any program you'd like.  Whatever the stdout is, will be what mycroft says.  Remember to restart the mycroft skills service once you add this.
+
 
 ## Example `DiagnosticsSkill` section.
 ```
