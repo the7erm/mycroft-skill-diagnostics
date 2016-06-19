@@ -15,7 +15,8 @@
 # You should have received a copy of the GNU General Public License
 # along with Mycroft Core.  If not, see <http://www.gnu.org/licenses/>.
 
-from os.path import dirname, exists
+from os.path import dirname, exists, isfile
+from os import access, X_OK
 
 from adapt.intent import IntentBuilder
 from mycroft.skills.core import MycroftSkill
@@ -43,7 +44,7 @@ def and_(strings):
 
 
 def sizeof_fmt(num, suffix='Bytes'):
-    # Stolen from: http://stackoverflow.com/a/1094933/2444609
+    # Attribution: http://stackoverflow.com/a/1094933/2444609
     for unit in ['Bytes', 'Kilo bytes', 'Megs', 'Gig', 'Tera bytes',
                  'Peta bytes', 'Exa bytes', 'Yotta bytes']:
         if abs(num) < 1024.0:
@@ -51,6 +52,11 @@ def sizeof_fmt(num, suffix='Bytes'):
         num /= 1024.0
 
     return "%.1f %s" % (num, 'Yi')
+
+
+def is_exe(fpath):
+    # Attribution: http://stackoverflow.com/a/377028/2444609
+    return isfile(fpath) and access(fpath, X_OK)
 
 
 class DiagnosticsSkill(MycroftSkill):
@@ -158,6 +164,13 @@ class DiagnosticsSkill(MycroftSkill):
                 "script": self.diagnostic_script
             }
             self.speak_dialog("missing.script", data)
+            return
+
+        if not is_exe(self.diagnostic_script):
+            data = {
+                "script": self.diagnostic_script
+            }
+            self.speak_dialog("not.executable.script", data)
             return
 
         self.speak_dialog("processing.script")
