@@ -11,6 +11,13 @@ It can either reside in `~/.mycroft/third_party_skills/` or `/opt/mycroft/third_
 | Diagnostics | Mycroft, run diagnostics.                 | Run external script                        |  One moment while I run the diagnostics script.  &lt;Whatever is printed to stdout of the diagnostics script.&gt; |
 | Uptime      | Mycroft, what's your uptime?              | Run `uptime -r` and get the output         | I have been up 2 days, 18 hours, 2 minutes                                                                        |
 
+## Install
+```
+mkdir -p ~/.mycroft/third_party_skills/
+cd ~/.mycroft/third_party_skills/
+git clone https://github.com/the7erm/mycroft-skill-diagnostics.git diagnostics
+# restart the skills service
+```
 
 ## Diagnostics
 The diagnostics script needs to be defined in `mycroft.ini`.  You can set it in `/etc/mycroft/mycroft.ini` or `~/.mycroft/mycroft.ini`.  The script can be the output to any program you'd like.  Whatever the stdout is, will be what mycroft says.
@@ -21,7 +28,7 @@ The diagnostics script needs to be defined in `mycroft.ini`.  You can set it in 
 script = "/home/erm/bin/mc-diagnostics.py"
 ```
 
-#### Example Diagnostics Script
+##### Example Diagnostics Script
 ```python
 #!/usr/bin/env python3
 
