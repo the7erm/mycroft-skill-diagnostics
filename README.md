@@ -25,12 +25,14 @@ script = "/home/erm/bin/mc-diagnostics.py"
 ```python
 #!/usr/bin/env python3
 
-from setproctitle import setproctitle
-
 import sys
 import subprocess as sp
-setproctitle("mc-diagnostics.py")
+
+from setproctitle import setproctitle
 from urllib import parse
+
+setproctitle("mc-diagnostics.py")
+
 
 def _print(*args):
     print(*args)
@@ -77,8 +79,7 @@ servers = [
     'do.the-erm.com',
     'se.the-erm.com',
     'blog.the-erm.com',
-    'www.the-erm.com',
-    "mx1.the-erm.com"
+    'www.the-erm.com'
 ]
 
 no_ping_servers = []
@@ -109,4 +110,5 @@ if no_wget_urls:
 
 if not no_wget_urls and not no_ping_servers:
     _print("All servers are up and responding to pings.")
+
 ```
