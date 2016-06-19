@@ -42,6 +42,20 @@ from urllib import parse
 
 setproctitle("mc-diagnostics.py")
 
+urls = [
+    "http://the-erm.com",
+    "http://music.the-erm.com",
+    "http://blog.the-erm.com"
+]
+
+servers = [
+    'mail',
+    'music.the-erm.com',
+    'do.the-erm.com',
+    'se.the-erm.com',
+    'blog.the-erm.com',
+    'www.the-erm.com',
+]
 
 def _print(*args):
     print(*args)
@@ -82,14 +96,7 @@ def ping(host):
 
     return status
 
-servers = [
-    'mail',
-    'music.the-erm.com',
-    'do.the-erm.com',
-    'se.the-erm.com',
-    'blog.the-erm.com',
-    'www.the-erm.com'
-]
+
 
 no_ping_servers = []
 
@@ -100,12 +107,6 @@ for host in servers:
 if no_ping_servers:
     _print("There is a problem with the following servers %s" %
            ", ".join(no_ping_servers))
-
-urls = [
-    "http://the-erm.com",
-    "http://music.the-erm.com",
-    "http://blog.the-erm.com"
-]
 
 no_wget_urls = []
 for url in urls:
