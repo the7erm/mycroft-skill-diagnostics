@@ -104,10 +104,10 @@ class DiagnosticsSkill(MycroftSkill):
         }
         self.speak_dialog("cpu", data)
         self.speak_dialog("WorkingHardOn")
-        output = check_output("ps -eo pcpu,comm --no-headers|"
-                              "sort -t. -nk1,2 -k4,4 -r |"
-                              "head -n 4 |"
-                              "awk '{print $2}'", shell=True)
+        output = subprocess.check_output("ps -eo pcpu,comm --no-headers|"
+                                         "sort -t. -nk1,2 -k4,4 -r |"
+                                         "head -n 4 |"
+                                         "awk '{print $2}'", shell=True)
         output = output.strip()
         self.speak(and_(output.split("\n")))
 
