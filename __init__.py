@@ -99,6 +99,10 @@ class DiagnosticsSkill(MycroftSkill):
         self.register_intent(custom_intent, self.handle_custom_intent)
 
     def handle_cpu_intent(self, message):
+        data = {
+            "percent": psutil.cpu_percent(interval=1)
+        }
+        self.speak_dialog("cpu", data)
         self.speak_dialog("WorkingHardOn")
         output = check_output("ps -eo pcpu,comm --no-headers|"
                               "sort -t. -nk1,2 -k4,4 -r |"
