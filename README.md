@@ -6,7 +6,7 @@ It can either reside in `~/.mycroft/third_party_skills/` or `/opt/mycroft/third_
 
 | Intent      | Example Keyphrase                         | Function                                   | Output                                                                                                            |
 |-------------|-------------------------------------------|--------------------------------------------|-------------------------------------------------------------------------------------------------------------------|
-| Cpu         | Mycroft, what is the current cpu percent? | Get the current cpu percentage.            | The cpu is currently running at 10%                                                                               |
+| Cpu         | Mycroft, what is the current cpu percent? | Get the current cpu percentage.            | The cpu is currently running at 10%.  I'm working hard on &lt;list of processes&gt;                               |
 | Diagnostics | Mycroft, run diagnostics.                 | Run external script                        |  One moment while I run the diagnostics script.  &lt;Whatever is printed to stdout of the diagnostics script.&gt; |
 | Drive space | Mycroft, how's my hard drive space?       | List drive partitions & their space        | / has 52.3 Gig free it's used 71.7%<br>/home/erm/disk2 has 758.9 Gig free it's used 58.6%                         |
 | Public Ip   | Mycroft, what is my public IP?            | Gets all the ip addresses from all nics    | This computer has the following lan IP addresses 192.168.1.116 and your public IP is [censored]                   |
