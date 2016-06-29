@@ -2,10 +2,10 @@
 #
 # This file is a 3rd party skill for mycroft.
 #
-# The Mycroft diagnostics skill is free software: you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
+# The Mycroft diagnostics skill is free software: you can redistribute it
+# and/or modify it under the terms of the GNU General Public License as
+# published by the Free Software Foundation, either version 3 of the License,
+# or (at your option) any later version.
 #
 # diagnostics kill is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -13,7 +13,8 @@
 # GNU General Public License for more details.
 #
 # You should have received a copy of the GNU General Public License
-# along with the diagnostics skill.  If not, see <http://www.gnu.org/licenses/>.
+# along with the diagnostics skill.
+# If not, see <http://www.gnu.org/licenses/>.
 
 from os.path import dirname, exists, isfile
 from os import access, X_OK
