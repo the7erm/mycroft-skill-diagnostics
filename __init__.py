@@ -163,26 +163,26 @@ class DiagnosticsSkill(MycroftSkill):
         self.speak_dialog("uptime", data)
 
     def handle_custom_intent(self, message):
-        if not self.diagnostic_script:
+        if not self.config.get("script"):
             self.speak_dialog("no.script")
             return
 
-        if not exists(self.diagnostic_script):
+        if not exists(self.config.get("script")):
             data = {
-                "script": self.diagnostic_script
+                "script": self.config.get("script")
             }
             self.speak_dialog("missing.script", data)
             return
 
-        if not is_exe(self.diagnostic_script):
+        if not is_exe(self.config.get("script")):
             data = {
-                "script": self.diagnostic_script
+                "script": self.config.get("script")
             }
             self.speak_dialog("not.executable.script", data)
             return
 
         self.speak_dialog("processing.script")
-        result = subprocess.check_output([self.diagnostic_script])
+        result = subprocess.check_output([self.config.get("script")])
         self.speak(result.strip())
 
     def stop(self):
