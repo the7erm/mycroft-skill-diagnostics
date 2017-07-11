@@ -1,8 +1,5 @@
 # mycroft-skill-diagnostics
 
-This is a 3rd party skill that adds cpu, uptime, diagnostics and a drive space keyword.
-
-It can either reside in `~/.mycroft/third_party_skills/` or `/opt/mycroft/third_party`
 
 | Intent      | Example Keyphrase                         | Function                                   | Output                                                                                                            |
 |-------------|-------------------------------------------|--------------------------------------------|-------------------------------------------------------------------------------------------------------------------|
@@ -14,9 +11,12 @@ It can either reside in `~/.mycroft/third_party_skills/` or `/opt/mycroft/third_
 
 ## Install
 ```
-mkdir -p ~/.mycroft/third_party_skills/
-cd ~/.mycroft/third_party_skills/
-git clone https://github.com/the7erm/mycroft-skill-diagnostics.git diagnostics
+cd /opt/mycroft/skills
+git clone https://github.com/the7erm/mycroft-skill-diagnostics.git diagnostics skill-diagnostics
+cd skill-diagnostics
+workon mycroft
+# if that doesn't work try `source <path to virtualenv/bin/activate>`
+pip install -r requirements.txt
 # restart the skills service
 ```
 
@@ -52,7 +52,6 @@ urls = [
 ]
 
 servers = [
-    'mail',
     'music.the-erm.com',
     'do.the-erm.com',
     'se.the-erm.com',
