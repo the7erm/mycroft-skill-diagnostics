@@ -12,7 +12,7 @@
 ## Install
 ```
 cd /opt/mycroft/skills
-git clone https://github.com/the7erm/mycroft-skill-diagnostics.git diagnostics skill-diagnostics
+git clone https://github.com/the7erm/mycroft-skill-diagnostics.git skill-diagnostics
 cd skill-diagnostics
 workon mycroft
 # if that doesn't work try `source <path to virtualenv/bin/activate>`
