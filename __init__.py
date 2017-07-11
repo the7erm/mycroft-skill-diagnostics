@@ -115,6 +115,9 @@ class DiagnosticsSkill(MycroftSkill):
     def handle_drive_intent(self, message):
         partitions = psutil.disk_partitions()
         for partition in partitions:
+            print("partition.mountpoint: %s" % partition.mountpoint)
+            if partition.mountpoint.startswith("/snap/"):
+                continue
             partition_data = psutil.disk_usage(partition.mountpoint)
             # total=21378641920, used=4809781248, free=15482871808,
             # percent=22.5
