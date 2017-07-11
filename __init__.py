@@ -16,7 +16,7 @@
 # along with the diagnostics skill.
 # If not, see <http://www.gnu.org/licenses/>.
 
-from os.path import dirname, exists, isfile
+from os.path import dirname, exists, isfile, expanduser
 from os import access, X_OK
 
 from adapt.intent import IntentBuilder
@@ -163,26 +163,30 @@ class DiagnosticsSkill(MycroftSkill):
         self.speak_dialog("uptime", data)
 
     def handle_custom_intent(self, message):
-        if not self.diagnostic_script:
+        script = expanduser(self.config.get("script"))
+
+        if not script:
             self.speak_dialog("no.script")
             return
 
-        if not exists(self.diagnostic_script):
+        if not exists(script):
             data = {
-                "script": self.diagnostic_script
+                "script": script
             }
             self.speak_dialog("missing.script", data)
             return
 
-        if not is_exe(self.diagnostic_script):
+
+        if not is_exe(script):
             data = {
-                "script": self.diagnostic_script
+                "script": script
             }
             self.speak_dialog("not.executable.script", data)
             return
 
         self.speak_dialog("processing.script")
-        result = subprocess.check_output([self.diagnostic_script])
+
+        result = subprocess.check_output([script])
         self.speak(result.strip())
 
     def stop(self):
