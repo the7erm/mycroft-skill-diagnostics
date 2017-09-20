@@ -36,6 +36,7 @@ The diagnostics script needs to be defined in the `mycroft.conf` file, under the
 ##### Example Diagnostics Script
 ```python
 #!/usr/bin/env python3
+
 import sys
 import subprocess as sp
 from urllib import parse
@@ -45,10 +46,12 @@ try:
 except:
     pass
 
+setproctitle("mc-diagnostics.py")
+
 urls = [
-    "http://the-erm.com",
-    "http://music.the-erm.com",
-    "http://blog.the-erm.com"
+    "https://the-erm.com",
+    "https://music.the-erm.com",
+    "https://blog.the-erm.com"
 ]
 
 servers = [
@@ -57,7 +60,9 @@ servers = [
     'se.the-erm.com',
     'blog.the-erm.com',
     'www.the-erm.com',
+    "mx1.the-erm.com"
 ]
+
 
 def _print(*args):
     print(*args)
@@ -97,7 +102,6 @@ def ping(host):
         _print("error:", err)
 
     return status
-
 
 
 no_ping_servers = []

@@ -26,6 +26,7 @@ servers = [
     "mx1.the-erm.com"
 ]
 
+
 def _print(*args):
     print(*args)
     sys.stdout.flush()
@@ -64,7 +65,6 @@ def ping(host):
         _print("error:", err)
 
     return status
-
 
 
 no_ping_servers = []
