@@ -2,9 +2,12 @@
 
 import sys
 import subprocess as sp
-
-from setproctitle import setproctitle
 from urllib import parse
+try:
+    from setproctitle import setproctitle
+    setproctitle("mc-diagnostics.py")
+except:
+    pass
 
 setproctitle("mc-diagnostics.py")
 

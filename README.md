@@ -36,14 +36,14 @@ The diagnostics script needs to be defined in the `mycroft.conf` file, under the
 ##### Example Diagnostics Script
 ```python
 #!/usr/bin/env python3
-
 import sys
 import subprocess as sp
-
-from setproctitle import setproctitle
 from urllib import parse
-
-setproctitle("mc-diagnostics.py")
+try:
+    from setproctitle import setproctitle
+    setproctitle("mc-diagnostics.py")
+except:
+    pass
 
 urls = [
     "http://the-erm.com",
