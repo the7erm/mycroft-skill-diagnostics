@@ -9,8 +9,6 @@ try:
 except:
     pass
 
-setproctitle("mc-diagnostics.py")
-
 urls = [
     "https://the-erm.com",
     "https://music.the-erm.com",

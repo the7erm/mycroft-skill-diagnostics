@@ -46,8 +46,6 @@ try:
 except:
     pass
 
-setproctitle("mc-diagnostics.py")
-
 urls = [
     "https://the-erm.com",
     "https://music.the-erm.com",
@@ -126,5 +124,6 @@ if no_wget_urls:
 
 if not no_wget_urls and not no_ping_servers:
     _print("All servers are up and responding to pings.")
+
 
 ```
